@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ecdf3770-635f-4399-80e8-b414a5dd1aba" activeEnvironment="Default" name="TransportSOAPService?WSDL" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="14f77092-e978-440f-ae5a-dd74a22259bf" wsaVersion="NONE" name="TransportSoapBinding" type="wsdl" bindingName="{http://webservice/}TransportSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8090/GestionCargaison/Transport/TransportSOAPService?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8090/GestionCargaison/Transport/TransportSOAPService?WSDL"><con:part><con:url>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService?WSDL</con:url><con:content><![CDATA[<wsdl:definitions name="Transport" targetNamespace="http://webservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://webservice/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="addCargaison" type="tns:addCargaison"/>
+      <xs:element name="addCargaisonResponse" type="tns:addCargaisonResponse"/>
+      <xs:element name="addMarchandise" type="tns:addMarchandise"/>
+      <xs:element name="addMarchandiseResponse" type="tns:addMarchandiseResponse"/>
+      <xs:element name="deleteMarchandise" type="tns:deleteMarchandise"/>
+      <xs:element name="deleteMarchandiseResponse" type="tns:deleteMarchandiseResponse"/>
+      <xs:element name="getAllCargaisons" type="tns:getAllCargaisons"/>
+      <xs:element name="getAllCargaisonsResponse" type="tns:getAllCargaisonsResponse"/>
+      <xs:element name="getMarchandisesParMC" type="tns:getMarchandisesParMC"/>
+      <xs:element name="getMarchandisesParMCResponse" type="tns:getMarchandisesParMCResponse"/>
+      <xs:complexType name="getMarchandisesParMC">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mc" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getMarchandisesParMCResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:marchandise"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="marchandise">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cargaison" type="tns:cargaison"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element name="numero" type="xs:long"/>
+          <xs:element name="poids" type="xs:double"/>
+          <xs:element name="volume" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cargaison">
+        <xs:sequence>
+          <xs:element name="idReference" type="xs:long"/>
+          <xs:element name="distance" type="xs:int"/>
+          <xs:element minOccurs="0" name="dateLivraison" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cargaisonRoutiere">
+        <xs:complexContent>
+          <xs:extension base="tns:cargaison">
+            <xs:sequence>
+              <xs:element name="temperatureConservation" type="xs:double"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="cargaisonAerienne">
+        <xs:complexContent>
+          <xs:extension base="tns:cargaison">
+            <xs:sequence>
+              <xs:element name="poidsMax" type="xs:double"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getAllCargaisons">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getAllCargaisonsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:cargaison"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteMarchandise">
+        <xs:sequence>
+          <xs:element name="refMarchandise" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteMarchandiseResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="addCargaison">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cargaison" type="tns:cargaison"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addCargaisonResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="addMarchandise">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="marchandise" type="tns:marchandise"/>
+          <xs:element name="refCargaison" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addMarchandiseResponse">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getMarchandisesParMC">
+    <wsdl:part element="tns:getMarchandisesParMC" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCargaisons">
+    <wsdl:part element="tns:getAllCargaisons" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMarchandiseResponse">
+    <wsdl:part element="tns:addMarchandiseResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCargaisonsResponse">
+    <wsdl:part element="tns:getAllCargaisonsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCargaison">
+    <wsdl:part element="tns:addCargaison" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMarchandisesParMCResponse">
+    <wsdl:part element="tns:getMarchandisesParMCResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMarchandise">
+    <wsdl:part element="tns:addMarchandise" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMarchandise">
+    <wsdl:part element="tns:deleteMarchandise" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCargaisonResponse">
+    <wsdl:part element="tns:addCargaisonResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMarchandiseResponse">
+    <wsdl:part element="tns:deleteMarchandiseResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TransportSOAPService">
+    <wsdl:operation name="getMarchandisesParMC">
+      <wsdl:input message="tns:getMarchandisesParMC" name="getMarchandisesParMC"></wsdl:input>
+      <wsdl:output message="tns:getMarchandisesParMCResponse" name="getMarchandisesParMCResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCargaisons">
+      <wsdl:input message="tns:getAllCargaisons" name="getAllCargaisons"></wsdl:input>
+      <wsdl:output message="tns:getAllCargaisonsResponse" name="getAllCargaisonsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMarchandise">
+      <wsdl:input message="tns:deleteMarchandise" name="deleteMarchandise"></wsdl:input>
+      <wsdl:output message="tns:deleteMarchandiseResponse" name="deleteMarchandiseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCargaison">
+      <wsdl:input message="tns:addCargaison" name="addCargaison"></wsdl:input>
+      <wsdl:output message="tns:addCargaisonResponse" name="addCargaisonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMarchandise">
+      <wsdl:input message="tns:addMarchandise" name="addMarchandise"></wsdl:input>
+      <wsdl:output message="tns:addMarchandiseResponse" name="addMarchandiseResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransportSoapBinding" type="tns:TransportSOAPService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getMarchandisesParMC">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMarchandisesParMC">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMarchandisesParMCResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCargaisons">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCargaisons">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCargaisonsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMarchandise">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteMarchandise">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteMarchandiseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCargaison">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCargaison">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCargaisonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMarchandise">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addMarchandise">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMarchandiseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Transport">
+    <wsdl:port binding="tns:TransportSoapBinding" name="TransportSOAPServicePort">
+      <soap:address location="http://localhost:8090/GestionCargaison/Transport/TransportSOAPService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint></con:endpoints><con:operation id="605770de-9d87-4657-b65c-7ee600dde190" isOneWay="false" action="" name="addCargaison" bindingOperationName="addCargaison" type="Request-Response" outputName="addCargaisonResponse" inputName="addCargaison" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d0592b5a-7b18-4912-98f2-98844b1ca918" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:addCargaison>
+         <!--Optional:-->
+         <cargaison>
+            <distance>78</distance>
+         </cargaison>
+      </web:addCargaison>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice/TransportSOAPService/addCargaison"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="43f9ef11-48ec-4c4c-bde4-0c3a480ddf70" isOneWay="false" action="" name="addMarchandise" bindingOperationName="addMarchandise" type="Request-Response" outputName="addMarchandiseResponse" inputName="addMarchandise" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ab6c16e-dfab-45f5-8087-4b2169c66761" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:addMarchandise>
+         <!--Optional:-->
+         <marchandise>
+            <!--Optional:-->
+            <!--Optional:-->
+            <nom>dfsfds</nom>
+            <poids>7</poids>
+            <volume>147</volume>
+         </marchandise>
+         <refCargaison>1</refCargaison>
+      </web:addMarchandise>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice/TransportSOAPService/addMarchandise"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bc3b8afd-7945-4458-9614-0444c3b252e4" isOneWay="false" action="" name="deleteMarchandise" bindingOperationName="deleteMarchandise" type="Request-Response" outputName="deleteMarchandiseResponse" inputName="deleteMarchandise" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6c0a6e1c-7fc9-4d51-969f-934ad43338da" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:deleteMarchandise>\r
+         <refMarchandise>2</refMarchandise>\r
+      </web:deleteMarchandise>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice/TransportSOAPService/deleteMarchandise"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6a73b7dd-059e-41af-b8c8-7d25d18780d8" isOneWay="false" action="" name="getAllCargaisons" bindingOperationName="getAllCargaisons" type="Request-Response" outputName="getAllCargaisonsResponse" inputName="getAllCargaisons" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="76c0f069-6515-411e-a8d9-263c256bcd2c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getAllCargaisons/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice/TransportSOAPService/getAllCargaisons"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3c003913-2ddb-4bf6-a358-c1968b860e9c" isOneWay="false" action="" name="getMarchandisesParMC" bindingOperationName="getMarchandisesParMC" type="Request-Response" outputName="getMarchandisesParMCResponse" inputName="getMarchandisesParMC" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cb2f8afc-4b49-49ec-a24f-a446134a6c2c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8090/GestionCargaison/Transport/TransportSOAPService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getMarchandisesParMC>\r
+         <!--Optional:-->\r
+         <mc>d</mc>\r
+      </web:getMarchandisesParMC>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice/TransportSOAPService/getMarchandisesParMC"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
