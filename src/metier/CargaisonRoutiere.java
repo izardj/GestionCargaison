@@ -1,7 +1,9 @@
 package metier;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
 @DiscriminatorValue("ROUTIERE")
 public class CargaisonRoutiere extends Cargaison {
 
