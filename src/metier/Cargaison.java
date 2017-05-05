@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -20,6 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "CARGAISON_TYPE")
 @XmlSeeAlso({CargaisonRoutiere.class, CargaisonAerienne.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Cargaison implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -28,10 +31,10 @@ public class Cargaison implements Serializable{
 	private long idReference;
 	private int distance;
 	private Date dateLivraison = new Date();
+	@XmlTransient
 	@OneToMany(mappedBy = "cargaison")
 	private List<Marchandise> marchandises;
 
-	@XmlTransient
 	public List<Marchandise> getMarchandises() {
 		return marchandises;
 	}
