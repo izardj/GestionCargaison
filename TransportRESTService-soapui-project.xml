@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e8ceabc7-8f20-4426-8b3d-a62559ac9f23" activeEnvironment="Default" name="TransportRESTService" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="21edc47c-6319-4b83-b3ec-81375af25dfb" wadlVersion="http://wadl.dev.java.net/2009/02" name="application" type="rest" basePath="/GestionCargaison/" definitionUrl="http://localhost:8090/GestionCargaison/application.wadl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8090/GestionCargaison/application.wadl"><con:part><con:url>http://localhost:8090/GestionCargaison/application.wadl</con:url><con:content><![CDATA[<application xmlns="http://wadl.dev.java.net/2009/02">
+  <resources base="http://localhost:8090/GestionCargaison/">
+    <resource path="/transport">
+      <resource path="/cargaisons">
+        <method id="getAllCargaisons" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/cargaisons/aerienne/{distance}/{temp}">
+        <param name="distance" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <param name="pds" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="addCargaisonAerienne" name="POST">
+          <response/>
+        </method>
+      </resource>
+      <resource path="/cargaisons/routiere/{distance}/{temp}">
+        <param name="distance" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <param name="temp" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="addCargaisonRoutiere" name="POST">
+          <response/>
+        </method>
+      </resource>
+    </resource>
+    <resource path="/application.xml">
+      <method id="output" name="GET">
+        <response>
+          <representation mediaType="application/xml"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>]]></con:content><con:type>http://wadl.dev.java.net/2009/02</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8090</con:endpoint></con:endpoints><con:resource name="/transport" path="/transport" id="48eb7091-4341-46eb-a8de-94b783b00dda"><con:settings/><con:parameters/><con:resource name="/cargaisons" path="/cargaisons" id="23ff5d45-9d69-4fb8-b4bc-fd85589ff463"><con:settings/><con:parameters/><con:method name="GET - getAllCargaisons" id="cff38040-1a16-4f10-bc39-b20a188dcf92" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="c57f92f4-55c0-4e1d-bc10-18a74e464b3f" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8090</con:endpoint><con:request/><con:originalUri>http://localhost/GestionCargaison//transport/cargaisons</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/cargaisons/aerienne/{distance}/{temp}" path="/cargaisons/aerienne/{distance}/{temp}{pds}" id="2817d5e6-06c1-48fa-ba29-85a26403146d"><con:settings/><con:parameters><con:parameter><con:name>distance</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pds</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - addCargaisonAerienne" id="f9ca94b1-1dd2-4c3e-9c9d-7ef66b086cfd" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" id="25de9ae3-803b-4a28-ae27-d612d213e19f" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8090</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/cargaisons/routiere/{distance}/{temp}" path="/cargaisons/routiere/{distance}/{temp}" id="d374099c-3e48-4727-92af-11da54297a3b"><con:settings/><con:parameters><con:parameter><con:name>distance</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>temp</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - addCargaisonRoutiere" id="a5daf9f9-315a-427b-aa9b-e270e8607bbb" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" id="c4c1c9ce-3323-42ee-9782-adb775c062fc" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8090</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="/application.xml" path="/application.xml" id="7ee520e7-9d3a-4782-98b4-983f8cff3249"><con:settings/><con:parameters/><con:method name="GET - output" id="9a74c519-7cf9-46b3-86c8-54d27250e54a" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="eff5d523-ebb3-4453-b96d-2679d64d1a21" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8090</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
